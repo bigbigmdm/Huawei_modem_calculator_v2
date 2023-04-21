@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>img/grey_point.png</file>
+        <file>img/red_point.png</file>
+        <file>img/green_point.png</file>
+    </qresource>
+</RCC>
