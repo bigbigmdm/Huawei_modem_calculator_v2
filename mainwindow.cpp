@@ -448,21 +448,27 @@ void MainWindow::on_pushButton_v201send_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     QString command;
+    QMessageBox::StandardButton reply;
     QString currPort = ui->PortBox->currentText();
     command = "at^nvwrex=8268,0,12,1,0,0,0,2,0,0,0,a,0,0,0\r";
     QByteArray ba = command.toLocal8Bit();
     const char *c_str2 = ba.data();
-    init9600(&currPort);
-    QObject::connect(serial, &QSerialPort::readyRead, this, &MainWindow::Read_Data);
-    serial->waitForBytesWritten(800);
-    serial->waitForReadyRead(800);
-    serial->write(c_str2);
-    qDebug(command.toLatin1());
-    serial->write("ATZ\r");
-    serial->waitForBytesWritten(800);
-    serial->waitForReadyRead(4000);
-    serial->write("ATZ\r");
-    serial->waitForBytesWritten(800);
-    serial->waitForReadyRead(4000);
-    close9600();
+
+    reply = QMessageBox::question(this, "AT^NVWREX commant", "The AT^NVWREX command can destroy your device!\nAre you sure you want to run this command? ",
+                                  QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+      init9600(&currPort);
+      QObject::connect(serial, &QSerialPort::readyRead, this, &MainWindow::Read_Data);
+      serial->waitForBytesWritten(800);
+      serial->waitForReadyRead(800);
+      serial->write(c_str2);
+      qDebug(command.toLatin1());
+      serial->write("ATZ\r");
+      serial->waitForBytesWritten(800);
+      serial->waitForReadyRead(4000);
+      serial->write("ATZ\r");
+      serial->waitForBytesWritten(800);
+      serial->waitForReadyRead(4000);
+      close9600();
+    }
 }
