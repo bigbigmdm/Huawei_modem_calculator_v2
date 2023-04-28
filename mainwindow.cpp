@@ -92,11 +92,11 @@ void MainWindow::on_pushButton_clicked()
     serial->waitForBytesWritten(800);
     serial->waitForReadyRead(4000);
     close9600();
+    sleep(2);
     ui->pushButton->setIcon(pixGrey);
     ui->pushButton->setIconSize(pixGrey.rect().size());
     ui->pushButton->repaint();
     //Analyse answer
-    sleep(2);
     QString txtBuf = ui->textBrowser->toPlainText();
     qDebug(txtBuf.toLatin1());
     txt_poz = txtBuf.indexOf("AT+CGSN", 0);
