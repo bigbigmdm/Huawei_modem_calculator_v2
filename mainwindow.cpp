@@ -43,9 +43,9 @@ void MainWindow::on_pushButton_clicked()
     QString answer;
     QString status;
     QString attempt;
-    QString txtV1 = " E1550, E155, E156, E156G, E160, E160G, E161, E166, E169, E169G, E170, E171, E171u-1, E172, E176, E180, E182E, E196, E226, E270, E271, E272, E510, E612, E618, E620, E630, E630+, E660, E660A, E800, E870, E880, EG162, EG162G, EG602, EG602G, E1750, Vodafone K2540, Vodafone K3515, Vodafone K3520, Vodafone K3565, Vodafone K3715,";
-    QString txtV2 = " B260, B593, B593s-22, B970, B970b, E173, E173U-1, E303, E303s-1, E325, E352, E352B, E352u-2C, E353, E353s-2, E353Au-2, E355, E357, E367, E369, E392, E586, E586-50e5, E3276, E3121, E3131, E3131S-1, E3131S-2, E3131s-1EW, E3131s-2EW, E3372, E5172, E5331s-2, E5776, E5776S-601, 821FT, 822FT, М150-1, B970b, 320D, 320S, 321S, 420S,";
-    QString txtV201 = " E320D, E3272, E3370, E3372, E3531, E5330, E5330Bs-2, E5372, E8231, E8278, E8372H, N100-4, M100-4, MR100-3, 423S, M21-4, 423S, 424D, 823F, 824F, 825FT, 826FT, 827F, 828FT,";
+    QString txtV1 = " E122, E150, E155, E156, E156G, E160, E160G, E161, E166, E169, E169G, E170, E171, E171u-1, E172, E176, E180, E182E, E196, E226, E270, E271, E272, E510, E612, E618, E620, E630, E630+, E660, E660A, E800, E870, E880, EG162, EG162G, EG602, EG602G, E1550, E1750, Vodafone K2540, Vodafone K3515, Vodafone K3520, Vodafone K3565, Vodafone K3715,";
+    QString txtV2 = " B260, B593, B593s-22, B970, B970b, E173, E173U-1, E303, E303s-1, E325, E352, E352B, E352u-2C, E353, E353s-2, E353Au-2, E355, E357, E367, E369, E392, E586, E586-50e5, E3276, E3121, E3131, E3131S-1, E3131S-2, E3131s-1EW, E3131s-2EW, E3372, E5172, E5331s-2, E5776, E5576S, E5776S-601, 821FT, 822FT, М150-1, B970b, 320D, 320S, 321S, 420S,";
+    QString txtV201 = " E320D, E3272, E3370, E3372, E3531, E5330, E5331, E5330Bs-2, E5372, E8231, E8278, E8372H, N100-4, M100-4, MR100-3, 423S, M21-4, 423S, 424D, 823F, 824F, 825FT, 826FT, 827F, 828FT,";
     QString searchModel ="";
     QFont fontBold, fontNormal;
     fontBold.setWeight(QFont::ExtraBold);
@@ -60,6 +60,8 @@ void MainWindow::on_pushButton_clicked()
     ui->label_version->setText("-");
     ui->label_model->setText("-");
     ui->label_manuf->setText("-");
+    ui->label_locked->setText("-");
+    ui->label_attempt->setText("-");
     QObject::connect(serial, &QSerialPort::readyRead, this, &MainWindow::Read_Data);
     //serial->waitForReadyRead(800);
     serial->waitForBytesWritten(800);
@@ -94,6 +96,7 @@ void MainWindow::on_pushButton_clicked()
     ui->pushButton->setIconSize(pixGrey.rect().size());
     ui->pushButton->repaint();
     //Analyse answer
+    sleep(2);
     QString txtBuf = ui->textBrowser->toPlainText();
     qDebug(txtBuf.toLatin1());
     txt_poz = txtBuf.indexOf("AT+CGSN", 0);
@@ -141,7 +144,6 @@ void MainWindow::on_pushButton_clicked()
        end_poz = answer.indexOf(",", txt_poz);
        attempt = answer.mid(txt_poz, end_poz - txt_poz);
        ui->label_attempt->setText(attempt);
-        qDebug() << txt_poz << endl << end_poz;
        }
        //highlighting the recommended unlock code
        searchModel = " " + ui->label_model->text() + ",";
@@ -198,6 +200,7 @@ void MainWindow::close9600()
     serial->clear();
     serial->close();
     serial->deleteLater();
+    sleep(2);
 }
 
 void MainWindow::on_ReverseButton_clicked()
