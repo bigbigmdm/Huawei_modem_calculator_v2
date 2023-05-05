@@ -6,6 +6,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     QString txtUSB = "USB";
+    pixGrey.load(":/res/img/grey_point.png");
+    pixRed.load(":/res/img/red_point.png");
+    ButtonGrey.addPixmap(pixGrey);
+    ButtonRed.addPixmap(pixRed);
+
     ui->setupUi(this);
          //Find available serial ports
          foreach(const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
@@ -23,8 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
                  serial.close();
              }
          }
-
-
+         ui->pushButton->setIcon(pixGrey);
+         ui->pushButton->setIconSize(pixGrey.rect().size());
 }
 
 MainWindow::~MainWindow()
@@ -34,10 +39,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QPixmap pixGrey(":/res/img/grey_point.png");
-    QIcon ButtonGrey(pixGrey);
-    QPixmap pixRed(":/res/img/red_point.png");
-    QIcon ButtonRed(pixRed);
+
     int txt_poz = 0;
     int end_poz = 0;
     QString answer;

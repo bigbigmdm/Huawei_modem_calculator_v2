@@ -20,6 +20,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QPixmap pixGrey;
+    QIcon ButtonGrey;
+    QPixmap pixRed;
+    QIcon ButtonRed;
 
 private slots:
     void on_pushButton_clicked();
