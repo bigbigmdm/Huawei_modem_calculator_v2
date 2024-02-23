@@ -5,7 +5,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    QString txtUSB = "USB";
     pixGrey.load(":/res/img/grey_point.png");
     pixRed.load(":/res/img/red_point.png");
     ButtonGrey.addPixmap(pixGrey);
@@ -42,7 +41,7 @@ void MainWindow::on_pushButton_clicked()
 
     int txt_poz = 0;
     int end_poz = 0;
-    QString answer;
+    QString answer = "";
     QString status;
     QString attempt;
     QString txtV1 = " E122, E150, E155, E156, E156G, E160, E160G, E161, E166, E169, E169G, E170, E171, E171u-1, E172, E176, E180, E182E, E196, E226, E270, E271, E272, E510, E612, E618, E620, E630, E630+, E660, E660A, E800, E870, E880, EG162, EG162G, EG602, EG602G, E1550, E1750, Vodafone K2540, Vodafone K3515, Vodafone K3520, Vodafone K3565, Vodafone K3715,";
@@ -57,6 +56,7 @@ void MainWindow::on_pushButton_clicked()
     ui->pushButton->repaint();
     QString currPort = ui->PortBox->currentText(); //QString("ttyUSB1");
     init9600(&currPort);
+    ui->imei->setText("");
     ui->textBrowser->setText("");
     ui->label_imei->setText("-");
     ui->label_version->setText("-");
