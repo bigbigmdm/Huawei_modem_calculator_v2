@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Huawei_modem_calculator
+Exec=/usr/bin/Huawei_modem_calculator
+Icon=/usr/share/pixmaps/huawei_unlocker64.png
+Path=/usr/bin/
+Terminal=false
+Categories=Electronics;Development;
+StartupNotify=false
+Comment=Huawei modem unlock code calculator
+GenericName=Huawei modem unlock code calculator
+Keywords=unlock;operator;SIM-card

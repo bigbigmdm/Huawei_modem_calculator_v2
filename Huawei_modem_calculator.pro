@@ -8,7 +8,7 @@ QT       += core gui
 QT       += serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 LIBS += -lcrypto
-TARGET = serial1
+TARGET = Huawei_modem_calculator
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,8 +25,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
     encrypt_1.cpp \
     encrypt_2.cpp \
     encrypt_3.cpp \
