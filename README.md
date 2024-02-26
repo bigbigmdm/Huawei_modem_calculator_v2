@@ -7,9 +7,9 @@ Is it [Huawei modem unlock code calculator](https://github.com/forth32/huaweical
 This program requires the installation of the ssl development library.
 On Red Hat, Centos, Fedora, Redos you can install it by running the following command:
 
-**`sudo yum install openssl-devel`**
+**`sudo dnf install openssl-devel`**
 
-**`yum install qt5-qtserialport-devel cmake `**
+**`sudo dnf install qt5-qtserialport-devel cmake `**
 
 **`sudo dnf install make automake gcc gcc-c++ kernel-devel`**
 
