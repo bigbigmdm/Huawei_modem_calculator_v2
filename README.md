@@ -1,7 +1,5 @@
 # Huawei_modem_calculator_v2
-
-Is it [Huawei modem unlock code calculator](https://github.com/forth32/huaweicalc) from **forth32** with the USB serial interface.
-
+It is the [Huawei modem unlock code calculator](https://github.com/forth32/huaweicalc) from **forth32** with the USB serial interface.
 ![Screenshot](https://github.com/bigbigmdm/Huawei_modem_calculator_v2/blob/main/img/huawei_calc_2.png)
 
 This program requires the installation of the ssl development library.
@@ -21,3 +19,5 @@ On Debian, Ubuntu, MX, Linux Mint you can install it by running the following co
 
 To compile and install the program, run the command `sudo ./install.sh`.
 To uninstall the program, run the command `sudo ./uninstall.sh`.
+
+Please run the program with sudo privileges.
