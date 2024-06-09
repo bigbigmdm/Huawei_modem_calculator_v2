@@ -32,8 +32,8 @@ sudo touch /etc/udev/rules.d/50-myusb.rules
 ```
 - write the following text to this file:
 ```
-KERNEL==«ttyUSB[0-9]*»,MODE=«0666»
-KERNEL==«ttyACM[0-9]*»,MODE=«0666»
+KERNEL=="ttyUSB[0-9]*",MODE="0666"
+KERNEL=="ttyACM[0-9]*",MODE="0666"
 ```
 - reload usb rules:
 ```
