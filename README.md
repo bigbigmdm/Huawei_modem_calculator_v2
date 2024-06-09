@@ -21,3 +21,19 @@ To compile and install the program, run the command `sudo ./install.sh`.
 To uninstall the program, run the command `sudo ./uninstall.sh`.
 
 Please run the program with sudo privileges.
+
+To run this program without root privileges you need to:
+
+- create a new file `/etc/udev/rules.d/50-myusb.rules`.
+```
+sudo touch /etc/udev/rules.d/50-myusb.rules
+```
+- write the following text to this file:
+```
+KERNEL==«ttyUSB[0-9]*»,MODE=«0666»
+KERNEL==«ttyACM[0-9]*»,MODE=«0666»
+```
+- reload usb rules:
+```
+sudo udevadm control --reload-rules
+```
