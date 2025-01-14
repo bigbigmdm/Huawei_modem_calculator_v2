@@ -24,24 +24,28 @@ public:
     QIcon ButtonGrey;
     QPixmap pixRed;
     QIcon ButtonRed;
+    bool init;
+    bool currentPortStatus;
 
 private slots:
     void on_pushButton_clicked();
-    void Read_Data();
     void init9600(QString *portName);
     void close9600();
     void on_MainWindow_destroyed();
     void on_ReverseButton_clicked();
-
     void on_calcbutton_clicked();
-
     void on_pushButton_v2send_clicked();
-
     void on_pushButton_v1send_clicked();
-
     void on_pushButton_v201send_clicked();
-
     void on_pushButton_2_clicked();
+    void on_lineEdit_editingFinished();
+    void on_PortBox_currentIndexChanged(int index);
+    void parsingData();
+    QString portWriteAndRead(QString *writeData);
+    void on_exitbutton_clicked();
+    void on_centralWidget_destroyed();
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::MainWindow *ui;
